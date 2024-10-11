@@ -14,8 +14,9 @@ services:
       - "3000:3000"
     environment:
       - DB_HOST=db
-      - DB_USER=root
-      - DB_PASSWORD=rootpassword
+      - DB_PORT=3306
+      - DB_USER=my_user
+      - DB_PASSWORD=my_password
       - DB_NAME=gestion_formations
     depends_on:
       - db
@@ -23,11 +24,16 @@ services:
       - /usr/src/app/node_modules
 
   db:
-    image: mysql:8
-    command: --default-authentication-plugin=mysql_native_password
+    image: mysql:9.0
+    # command: --default-authentication-plugin=mysql_native_password
     restart: always
+    ports:
+      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_USER: my_user
+      MYSQL_PASSWORD: my_password
+      MYSQL_ROOT_USER: root_user
       MYSQL_DATABASE: gestion_formations
     volumes:
       - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql

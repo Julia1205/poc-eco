@@ -13,7 +13,7 @@ const db = mysql.createConnection({
   port: '3306',
   user: 'my_user',
   password: 'my_password',
-  database: 'my_database'
+  database: 'gestion_formations'
 });
 
 // Implémentez ici les routes pour l'API
