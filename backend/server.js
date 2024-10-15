@@ -9,11 +9,11 @@ app.use(express.json());
 app.use(cors());
 
 const db = mysql.createConnection({
-  host: 'db',
-  port: '3306',
-  user: 'my_user',
-  password: 'my_password',
-  database: 'gestion_formations'
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
 });
 
 // Implémentez ici les routes pour l'API
